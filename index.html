@@ -100,13 +100,7 @@
         let advice = (health === "none") ? "ቪዲዮውን እያዩ 45 ደቂቃ ይስሩ።" : "ለጤናዎ የሚስማማ እንቅስቃሴ ለማግኘት በውስጥ መስመር ያማክሩኝ።";
 
         res.style.display = "block";
-        res.innerHTML = `<strong>ውጤት፦ BMI ${bmi} (${status})</strong><br><strong>ምክር፦</strong> ${advice}<br><span class='source-tag'>ምንጭ፦ WHO Technical Reports</span>`;
-    }
-
-    function getAcademicAnswer() {
-        let q = document.getElementById('userQuestion').value;
-        let res = document.getElementById('qaResult');
-        if(!q) return;
+        res.innerHTML = `<strong>ውጤት፦ BMI ${bmi} (${status})</strong><br><strong>ምክር፦</strong> ${advice}<br><span class='source-tag'>ምንጭ፦ WHO Technical Rep
         res.style.display = "block";
         res.innerHTML = `<strong>ሳይንሳዊ ምላሽ፦</strong><br>እንደ ሀርቫርድ ጥናት የአካል ብቃት እንቅስቃሴ ከምግብ ጋር መጣጣም አለበት።<br><span class='source-tag'>ምንጭ፦ Harvard Nutrition Source</span>`;
     }
