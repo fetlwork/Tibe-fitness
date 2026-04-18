@@ -3,118 +3,43 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tiba Fitness - ጥባ ፊትነስ</title>
+    <title>Tebe Fitness - ጥቤ ፊትነስ</title>
     <style>
         :root { --primary: #e8491d; --secondary: #2c3e50; --light: #f9f9f9; --dark: #1a1a1a; }
         body { font-family: 'Segoe UI', Arial, sans-serif; margin: 0; padding: 0; background: var(--light); color: #333; line-height: 1.6; }
-        
-        /* Header & Hero */
         header { background: var(--dark); color: white; padding: 40px 20px; text-align: center; border-bottom: var(--primary) 5px solid; }
-        .hero { background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://images.unsplash.com/photo-1517836357463-d25dfeac3438?auto=format&fit=crop&w=1350&q=80'); 
-                background-size: cover; color: white; padding: 60px 20px; text-align: center; }
-        
-        .container { width: 90%; max-width: 1100px; margin: auto; padding: 20px 0; }
-        
-        /* BMI Calculator */
+        .container { width: 95%; max-width: 1100px; margin: auto; padding: 20px 0; }
         .card { background: white; padding: 25px; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); margin-bottom: 30px; }
         .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; }
-        input, select { padding: 12px; width: 100%; box-sizing: border-box; border: 1px solid #ddd; border-radius: 8px; margin-top: 8px; }
-        button { background: var(--primary); color: white; border: none; padding: 15px 30px; cursor: pointer; border-radius: 8px; font-weight: bold; width: 100%; margin-top: 20px; transition: 0.3s; }
-        button:hover { background: #ff5722; }
-
-        /* Professional Sections */
-        h2 { color: var(--secondary); border-bottom: 2px solid var(--primary); display: inline-block; padding-bottom: 5px; }
-        .advice-card { background: #fff; padding: 20px; border-left: 6px solid var(--primary); border-radius: 8px; margin-bottom: 20px; }
-        ul { padding-left: 20px; }
-
-        /* Fun Zone (Jokes & Tips) */
-        .fun-zone { background: #fff3f0; padding: 30px; border-radius: 15px; text-align: center; margin-top: 40px; border: 1px dashed var(--primary); }
-        .joke-text { font-style: italic; color: #555; font-size: 1.1rem; }
-
+        button { background: var(--primary); color: white; border: none; padding: 15px 30px; cursor: pointer; border-radius: 8px; font-weight: bold; width: 100%; margin-top: 20px; }
+        .result-box { margin-top: 20px; padding: 20px; background: #f0f7ff; border-radius: 8px; border-left: 5px solid var(--primary); }
         footer { background: var(--dark); color: white; text-align: center; padding: 40px 20px; margin-top: 60px; }
     </style>
 </head>
 <body>
-
 <header>
-    <h1>TIBA FITNESS | ጥባ ፊትነስ</h1>
-    <p>ለተሟላ ጤና፣ ውበት እና ጥንካሬ!</p>
+    <h1>TEBE FITNESS | ጥቤ ፊትነስ</h1>
+    <p>ሳይንሳዊ የስፖርት ሳይንስ እና የኒውትሬሽን ማዕከል</p>
 </header>
-
-<section class="hero">
-    <h2>ለውጥን ዛሬ ይጀምሩ!</h2>
-    <p>በኤሮቢክስ እና በተመጣጠነ አመጋገብ ሰውነትዎን ይቀይሩ።</p>
-</section>
-
 <div class="container">
-    
     <section class="card">
-        <h2>📊 የሰውነትዎን ሁኔታ (BMI) ይለኩ</h2>
-        <p>ቁመትዎን እና ክብደትዎን በማስገባት የጤና ደረጃዎን ያውቁ።</p>
+        <h2>🏋️ የግል ስልጠና መመሪያ</h2>
         <div class="grid">
-            <div>
-                <label>ጾታ</label>
-                <select id="gender">
-                    <option value="male">ወንድ</option>
-                    <option value="female">ሴት</option>
-                </select>
-            </div>
-            <div>
-                <label>ክብደት (በኪሎግራም)</label>
-                <input type="number" id="weight" placeholder="ለምሳሌ፡ 75">
-            </div>
-            <div>
-                <label>ቁመት (በሴንቲሜትር)</label>
-                <input type="number" id="height" placeholder="ለምሳሌ፡ 175">
-            </div>
+            <div><label>ጾታ</label><select id="userGender"><option value="male">ወንድ</option><option value="female">ሴት</option></select></div>
+            <div><label>ትኩረት የሚፈልገው ክፍል</label><select id="bodyPart"><option value="abs">ለሆድ (Abs)</option><option value="glutes">ለዳሌ</option></select></div>
         </div>
-        <button onclick="calculateBMI()">ውጤቱን አሳይ</button>
-        <div id="bmi-result" style="margin-top: 20px; font-weight: bold; font-size: 1.2rem; text-align: center; color: var(--primary);"></div>
+        <button onclick="getAdvice()">ምክር ያግኙ</button>
+        <div id="result" class="result-box" style="display:none;"></div>
     </section>
-
-    <h2>🥗 የአመጋገብ እና የቅርጽ መመሪያ</h2>
-    <div class="grid">
-        <div class="advice-card">
-            <h3>ክብደት ለመቀነስ</h3>
-            <ul>
-                <li><strong>ከ18-40 ዓመት፦</strong> በፋይበር የበለጸጉ ምግቦችን (አትክልት) ያብዙ። ስኳር እና ነጭ ዱቄት ይቀንሱ።</li>
-                <li><strong>ከ40 ዓመት በላይ፦</strong> የልብ ጤናን ለመጠበቅ ኦሜጋ-3 ያላቸውን (ለውዝ፣ አሳ) ይጠቀሙ።</li>
-            </ul>
-        </div>
-        <div class="advice-card">
-            <h3>ለቅርጽ እና ውበት</h3>
-            <p>ኤሮቢክስን ከጥንካሬ ስልጠና ጋር በማጣመር ሰውነትዎን ማሳመር ይችላሉ። ለሆድ እና ለዳሌ ቅርጽ ልዩ ትኩረት የሚሰጡ እንቅስቃሴዎችን በየቀኑ 20 ደቂቃ ይስሩ።</p>
-        </div>
-    </div>
-
-    <section class="fun-zone">
-        <h3>💡 የቀኑ ምክር</h3>
-        <p id="daily-tip">"ውሃ መጠጣት ሰውነትዎን ከመርዝ ያጸዳል፤ ቆዳዎ እንዲያምርም ያደርጋል።"</p>
-        <hr style="width: 30%; margin: 20px auto; opacity: 0.3;">
-        <h3>😂 የፈገግታ ጊዜ</h3>
-        <p class="joke-text" id="joke">"አሰልጣኝ፦ 'ለምንድነው ጂም ውስጥ የምታለቅሰው?' <br> ሰልጣኝ፦ 'ስብ እየቀለጥኩ ሳይሆን እየሞተብኝ ስለሆነ ነው!'"</p>
-    </section>
-
 </div>
-
 <footer>
-    <p>ጥባ ፊትነስ - ጤናማ ትውልድ እንገነባለን!</p>
-    <p>📍 አድራሻ፦ አዲስ አበባ፣ መገናኛ | 📞 ስልክ፦ +251 9XX XX XX XX</p>
-    <p>&copy; 2026 Tiba Fitness. All Rights Reserved.</p>
+    <p>ጥቤ ፊትነስ - ወሰን ትራፊክ መብራት | 📞 0924399582</p>
 </footer>
-
 <script>
-    function calculateBMI() {
-        let weight = document.getElementById('weight').value;
-        let height = document.getElementById('height').value / 100;
-        
-        if(weight > 0 && height > 0) {
-            let bmi = (weight / (height * height)).toFixed(1);
-            let msg = "";
-            
-            if(bmi < 18.5) msg = "ክብደትዎ ዝቅተኛ ነው። የተመጣጠነ ምግብ ይጨምሩ።";
-            else if(bmi < 24.9) msg = "ድንቅ ነው! ጤናማ የክብደት መጠን ላይ ነዎት።";
-            else if(bmi < 29.9) msg = "መጠነኛ ውፍረት አለብዎት። ኤሮቢክስ ያዘውትሩ።";
-            else msg = "ውፍረትዎ ከፍተኛ ነው። የባለሙያ ምክርና ጥብቅ ስልጠና ያስፈልግዎታል።";
-            
-            document.getElementById('bmi-result').inn
+    function getAdvice() {
+        document.getElementById('result').style.display = "block";
+        document.getElementById('result').innerHTML = "እንኳን ወደ ጥቤ ፊትነስ በሰላም መጡ! ለጤናዎ የሚስማማ እንቅስቃሴ እና የአመጋገብ መመሪያ እናዘጋጅልዎታለን።";
+    }
+</script>
+</body>
+</html>
