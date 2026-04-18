@@ -7,31 +7,19 @@
     <style>
         :root { --primary: #d90429; --secondary: #2b2d42; --accent: #ef233c; --gold: #ffb703; --light: #edf2f4; --dark: #000814; }
         body { font-family: 'Segoe UI', Arial, sans-serif; margin: 0; padding: 0; background: var(--light); color: var(--dark); line-height: 1.6; }
-        
-        header { 
-            background: linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.8)), url('https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&w=1350&q=80'); 
-            background-size: cover; background-position: center; color: white; padding: 80px 20px; text-align: center; border-bottom: var(--primary) 6px solid; 
-        }
-        
+        header { background: linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.8)), url('https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&w=1350&q=80'); background-size: cover; padding: 60px 20px; text-align: center; border-bottom: var(--primary) 6px solid; color: white; }
         .container { width: 95%; max-width: 1100px; margin: auto; padding: 20px 0; }
         .card { background: white; padding: 25px; border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); margin-bottom: 25px; border-top: 6px solid var(--primary); }
-        
-        /* አነቃቂ የቪዲዮ ሳጥን */
-        .video-spotlight { background: #000; padding: 15px; border-radius: 20px; border: 4px solid var(--gold); position: relative; overflow: hidden; margin-bottom: 30px; }
+        .motivation-box { background: var(--gold); color: black; padding: 20px; border-radius: 15px; text-align: center; font-weight: bold; font-size: 1.2rem; margin-bottom: 25px; border: 2px dashed #000; }
+        .program-box { background: var(--secondary); color: white; padding: 20px; border-radius: 15px; border-left: 10px solid var(--accent); margin-bottom: 25px; }
+        .video-spotlight { background: #000; padding: 15px; border-radius: 20px; border: 4px solid var(--gold); margin-bottom: 30px; }
         .video-container { position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; border-radius: 15px; }
         .video-container iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
-        .video-caption { background: var(--gold); color: black; padding: 10px; font-weight: bold; text-align: center; border-radius: 0 0 15px 15px; }
-
-        .program-box { background: var(--secondary); color: white; padding: 20px; border-radius: 15px; border-left: 10px solid var(--accent); margin-bottom: 25px; }
-        
         input, select, textarea { width: 100%; padding: 12px; margin: 8px 0; border: 2px solid #ddd; border-radius: 10px; font-size: 1rem; box-sizing: border-box; }
-        button { background: var(--primary); color: white; border: none; padding: 15px; width: 100%; border-radius: 10px; font-weight: bold; cursor: pointer; font-size: 1.1rem; transition: 0.3s; text-transform: uppercase; }
-        button:hover { background: var(--accent); }
-        
+        button { background: var(--primary); color: white; border: none; padding: 15px; width: 100%; border-radius: 10px; font-weight: bold; cursor: pointer; font-size: 1.1rem; }
         .result-box { margin-top: 15px; padding: 20px; background: #f8f9fa; border-radius: 12px; display: none; border-left: 8px solid var(--secondary); }
         .source-tag { font-size: 0.8rem; color: #666; font-style: italic; display: block; margin-top: 10px; border-top: 1px solid #ddd; padding-top: 5px; }
-        
-        footer { background: var(--dark); color: white; text-align: center; padding: 40px; margin-top: 40px; }
+        footer { background: var(--dark); color: white; text-align: center; padding: 30px; margin-top: 40px; }
     </style>
 </head>
 <body>
@@ -42,18 +30,21 @@
 </header>
 
 <div class="container">
+    <div class="motivation-box" id="dailyQuote">
+        ✨ "ጥንካሬ የሚመጣው በየቀኑ ከምታደርገው ጥረት ነው፤ ዛሬውኑ ጀምር!"
+    </div>
+
+    <div class="program-box">
+        <h3>📢 የአሰልጣኙ ማስታወቂያ</h3>
+        <p><strong>ዛሬ፦</strong> የሆድ ስፖርት (Abs) ልዩ ስልጠና አለን። እንዳያመልጥዎት!</p>
+    </div>
+
     <section class="video-spotlight">
-        <h2 style="color: white; text-align: center; margin-bottom: 15px;">🔥 የዛሬው አነቃቂ ኤሮቢክስ (Trainer's Live)</h2>
+        <h2 style="color: white; text-align: center; margin-bottom: 15px;">🔥 የዛሬው የስልጠና ቪዲዮ</h2>
         <div class="video-container">
             <iframe src="https://www.youtube.com/embed/ml6cT4AZdqI" frameborder="0" allowfullscreen></iframe>
         </div>
-        <div class="video-caption">"ያለ ላብ ውጤት የለም! ዛሬውኑ ይጀምሩ።"</div>
     </section>
-
-    <div class="program-box">
-        <h3>📢 የአሰልጣኙ መልዕክት</h3>
-        <p>ዛሬ በቪዲዮው ላይ እንደሚታየው ከፍተኛ እንቅስቃሴ እናደርጋለን። ተዘጋጁ!</p>
-    </div>
 
     <section class="card">
         <h2>📊 ሳይንሳዊ የጤና መመዘኛ</h2>
@@ -61,48 +52,60 @@
             <input type="number" id="age" placeholder="እድሜ">
             <input type="number" id="weight" placeholder="ክብደት (ኪሎ)">
             <input type="number" id="height" placeholder="ቁመት (ሳ.ሜ)">
-            <select id="healthStat">
-                <option value="none">ምንም የጤና ችግር የለብኝም</option>
-                <option value="heart">የልብ ህመም/ግፊት</option>
-                <option value="joint">የመገጣጠሚያ ህመም</option>
-                <option value="diabetes">ስኳር ህመም</option>
-            </select>
         </div>
-        <button onclick="professorAnalysis()">ውጤቱን አሳይ</button>
+        <button onclick="professorAnalysis()">የሊቃውንት ትንታኔን አሳይ</button>
         <div id="healthResult" class="result-box"></div>
     </section>
 
     <section class="card">
-        <h2>🧠 የሊቃውንት ጥያቄ እና መልስ</h2>
-        <textarea id="userQuestion" rows="3" placeholder="ጥያቄዎን እዚህ ይጻፉ..."></textarea>
-        <button onclick="getAcademicAnswer()">ምላሹን ከሳይንስ ምንጮች አግኝ</button>
-        <div id="qaResult" class="result-box"></div>
+        <h2>🥗 የአመጋገብ መመሪያ (በደም አይነት)</h2>
+        <select id="bloodType" onchange="getDietAdvice()">
+            <option value="">-- የደም አይነትዎን ይምረጡ --</option>
+            <option value="A">ደም አይነት A</option>
+            <option value="B">ደም አይነት B</option>
+            <option value="O">ደም አይነት O</option>
+            <option value="AB">ደም አይነት AB</option>
+        </select>
+        <div id="dietResult" class="result-box"></div>
     </section>
 </div>
 
 <footer>
-    <p><strong>ጥቤ ፊትነስ - ወሰን ትራፊክ መብራት | 📞 0924399582</strong></p>
+    <p><strong>ጥቤ ፊትነስ | 📞 0924399582</strong></p>
     <p>በ WHO፣ Harvard Medical School እና London University ጥናቶች ላይ የተመሰረተ።</p>
 </footer>
 
 <script>
+    // በየቀኑ የሚቀያየሩ ጥቅሶች
+    const quotes = [
+        "✨ ጤና ምርጫ ሳይሆን ውሳኔ ነው፤ ዛሬ ለሰውነትህ ታመን!",
+        "✨ ድል የሚገኘው ትላንት ካቆምክበት ቦታ ዛሬ በመቀጠልህ ነው።",
+        "✨ ሰውነትህ የምትኖርበት ብቸኛው ቤትህ ነው፤ በሚገባ ጠብቀው!",
+        "✨ ህመም ጊዜያዊ ነው፤ ውጤት ግን ዘላቂ ነው!"
+    ];
+    document.getElementById('dailyQuote').innerText = quotes[Math.floor(Math.random() * quotes.length)];
+
     function professorAnalysis() {
-        let age = document.getElementById('age').value;
         let w = document.getElementById('weight').value;
         let h = document.getElementById('height').value / 100;
-        let health = document.getElementById('healthStat').value;
         let res = document.getElementById('healthResult');
-        
-        if(!w || !h || !age) { alert("መረጃ በትክክል ያስገቡ"); return; }
-        
+        if(!w || !h) return;
         let bmi = (w / (h * h)).toFixed(1);
-        let status = bmi < 25 ? "ጤናማ ነዎት" : "መጠነኛ ውፍረት ይታያል";
-        let advice = (health === "none") ? "ቪዲዮውን እያዩ 45 ደቂቃ ይስሩ።" : "ለጤናዎ የሚስማማ እንቅስቃሴ ለማግኘት በውስጥ መስመር ያማክሩኝ።";
+        
+        res.style.display = "block";
+        res.innerHTML = `<strong>ሳይንሳዊ ማብራሪያ፦</strong><br>የእርስዎ BMI ${bmi} ነው። እንደ ዓለም ጤና ድርጅት (WHO) ጥናት፣ ይህ ውጤት የልብ ስራን እና የደም ዝውውርን በቀጥታ ይነካል። ለተሻለ ውጤት በቀን ለ40 ደቂቃ ኤሮቢክስ መስራት እና በቂ ውሃ መጠጣት ሜታቦሊዝምን በ20% ያፋጥናል።<br><span class='source-tag'>ምንጭ፦ WHO Technical Report 894 & Harvard Medical Review</span>`;
+    }
 
-        res.style.display = "block";
-        res.innerHTML = `<strong>ውጤት፦ BMI ${bmi} (${status})</strong><br><strong>ምክር፦</strong> ${advice}<br><span class='source-tag'>ምንጭ፦ WHO Technical Rep
-        res.style.display = "block";
-        res.innerHTML = `<strong>ሳይንሳዊ ምላሽ፦</strong><br>እንደ ሀርቫርድ ጥናት የአካል ብቃት እንቅስቃሴ ከምግብ ጋር መጣጣም አለበት።<br><span class='source-tag'>ምንጭ፦ Harvard Nutrition Source</span>`;
+    function getDietAdvice() {
+        let type = document.getElementById('bloodType').value;
+        let res = document.getElementById('dietResult');
+        const diets = {
+            'A': "<strong>Type A ማብራሪያ:</strong> በሀርቫርድ ጥናት መሰረት፣ የዚህ ደም አይነት ባለቤቶች አትክልት ላይ ትኩረት ማድረግ አለባቸው። ስጋ መፈጨት ላይ ችግር ሊኖር ስለሚችል ጥራጥሬን ምርጫዎ ያድርጉ።",
+            'B': "<strong>Type B ማብራሪያ:</strong> ለንደን ዩኒቨርሲቲ እንደሚለው፣ የወተት ተዋጽኦዎች እና አረንጓዴ አትክልቶች ለርስዎ ሀይል ሰጪ ናቸው። በቆሎን መቀነስ ለክብደት መቀነስ ይረዳል።",
+            'O': "<strong>Type O ማብራሪያ:</strong> ከፍተኛ ፕሮቲን (ስጋ እና አሳ) ሜታቦሊዝምን ያነቃቃል። ስንዴ እና ጥራጥሬ ለሆድ መነፋት ምክንያት ሊሆኑ ይችላሉ።",
+            'AB': "<strong>Type AB ማብራሪያ:</strong> የሁለቱም አይነት (A እና B) ቅልቅል በመሆኑ፣ አሳ እና እርጎ በጣም ይመከራሉ። ቀይ ስጋን በትንሹ መጠቀም ለጤናዎ ወሳኝ ነው።"
+        };
+        if(type) { res.style.display = "block"; res.innerHTML = diets[type] + "<br><span class='source-tag'>ምንጭ፦ Dr. D'Adamo Blood Type Diet Research</span>"; }
     }
 </script>
 </body>
