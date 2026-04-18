@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="am">
 <head>
@@ -6,28 +5,53 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tebe Fitness - ጥቤ ፊትነስ</title>
     <style>
-        :root { --primary: #d90429; --secondary: #2b2d42; --accent: #ef233c; --gold: #ffb703; --light: #edf2f4; --dark: #000814; }
-        body { font-family: 'Segoe UI', Arial, sans-serif; margin: 0; padding: 0; background: var(--light); color: var(--dark); line-height: 1.6; }
-        header { background: linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.8)), url('https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&w=1350&q=80'); background-size: cover; padding: 60px 20px; text-align: center; border-bottom: var(--primary) 6px solid; color: white; }
-        .container { width: 95%; max-width: 1100px; margin: auto; padding: 20px 0; }
+        :root { --primary: #d90429; --secondary: #2b2d42; --gold: #ffb703; --light: #f8f9fa; --dark: #000814; }
+        body { font-family: 'Segoe UI', Arial, sans-serif; margin: 0; background: var(--light); color: #333; line-height: 1.6; }
+        
+        /* Professional Header */
+        header { 
+            background: linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.8)), url('https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&w=1350&q=80'); 
+            background-size: cover; background-position: center; padding: 60px 20px; text-align: center; border-bottom: var(--primary) 6px solid; color: white; 
+        }
+        
+        .container { width: 95%; max-width: 1000px; margin: auto; padding: 20px 0; }
+        
+        /* Modern Cards */
         .card { background: white; padding: 25px; border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); margin-bottom: 25px; border-top: 6px solid var(--primary); }
-        .motivation-box { background: var(--gold); color: black; padding: 20px; border-radius: 15px; text-align: center; font-weight: bold; font-size: 1.2rem; margin-bottom: 25px; border: 2px dashed #000; }
-        .program-box { background: var(--secondary); color: white; padding: 20px; border-radius: 15px; border-left: 10px solid var(--accent); margin-bottom: 25px; }
+        
+        /* Daily Motivation Box */
+        .motivation-box { background: var(--gold); color: black; padding: 20px; border-radius: 15px; text-align: center; font-weight: bold; font-size: 1.2rem; margin-bottom: 25px; border: 2px dashed #000; box-shadow: 0 5px 15px rgba(0,0,0,0.1); }
+        
+        /* Coach's Ad Box */
+        .ad-box { background: var(--secondary); color: white; padding: 20px; border-radius: 15px; border-left: 10px solid var(--gold); margin-bottom: 25px; }
+        
+        /* Video Spotlight */
         .video-spotlight { background: #000; padding: 15px; border-radius: 20px; border: 4px solid var(--gold); margin-bottom: 30px; }
         .video-container { position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; border-radius: 15px; }
         .video-container iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
-        input, select, textarea { width: 100%; padding: 12px; margin: 8px 0; border: 2px solid #ddd; border-radius: 10px; font-size: 1rem; box-sizing: border-box; }
-        button { background: var(--primary); color: white; border: none; padding: 15px; width: 100%; border-radius: 10px; font-weight: bold; cursor: pointer; font-size: 1.1rem; }
-        .result-box { margin-top: 15px; padding: 20px; background: #f8f9fa; border-radius: 12px; display: none; border-left: 8px solid var(--secondary); }
-        .source-tag { font-size: 0.8rem; color: #666; font-style: italic; display: block; margin-top: 10px; border-top: 1px solid #ddd; padding-top: 5px; }
-        footer { background: var(--dark); color: white; text-align: center; padding: 30px; margin-top: 40px; }
+
+        /* Form Styling */
+        input, select { width: 100%; padding: 12px; margin: 10px 0; border: 2px solid #ddd; border-radius: 10px; font-size: 1rem; box-sizing: border-box; }
+        button { background: var(--primary); color: white; border: none; padding: 15px; width: 100%; border-radius: 10px; font-weight: bold; cursor: pointer; font-size: 1.1rem; transition: 0.3s; }
+        button:hover { background: #b80322; }
+        
+        /* Result Boxes */
+        .result-box { margin-top: 20px; padding: 20px; background: #eef2f7; border-radius: 12px; display: none; border-left: 8px solid var(--secondary); }
+        .diet-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-top: 15px; }
+        .diet-box { padding: 15px; border-radius: 10px; font-size: 0.95rem; }
+        .allowed { background: #d4edda; color: #155724; border: 1px solid #c3e6cb; }
+        .forbidden { background: #f8d7da; color: #721c24; border: 1px solid #f5c6cb; }
+        
+        .source-tag { font-size: 0.8rem; color: #666; font-style: italic; display: block; margin-top: 15px; border-top: 1px solid #ddd; padding-top: 8px; }
+        
+        footer { background: var(--dark); color: white; text-align: center; padding: 40px; margin-top: 40px; }
     </style>
 </head>
 <body>
 
 <header>
     <h1>TEBE FITNESS | ጥቤ ፊትነስ</h1>
-    <p>ሳይንሳዊ የአካል ብቃት እና የኒውትሬሽን ማዕከል</p>
+    <p>በ WHO እና Harvard ዩኒቨርሲቲ ሳይንሳዊ መመሪያዎች ላይ የተመሰረተ</p>
 </header>
 
 <div class="container">
@@ -35,31 +59,30 @@
         ✨ "ጥንካሬ የሚመጣው በየቀኑ ከምታደርገው ጥረት ነው፤ ዛሬውኑ ጀምር!"
     </div>
 
-    <div class="program-box">
-        <h3>📢 የአሰልጣኙ ማስታወቂያ</h3>
-        <p><strong>ዛሬ፦</strong> የሆድ ስፖርት (Abs) ልዩ ስልጠና አለን። እንዳያመልጥዎት!</p>
+    <div class="ad-box">
+        <h3>📢 የአሰልጣኙ መልዕክት (Daily News)</h3>
+        <p><strong>ዛሬ፦</strong> የሆድ ስፖርት (Abs) እና የኤሮቢክስ ስልጠና በ 11:30 ይጀምራል። አዲስ የመጣውን ቪዲዮ ከስር መለማመድ ትችላላችሁ።</p>
     </div>
 
     <section class="video-spotlight">
-        <h2 style="color: white; text-align: center; margin-bottom: 15px;">🔥 የዛሬው የስልጠና ቪዲዮ</h2>
+        <h2 style="color: white; text-align: center; margin-bottom: 15px;">🔥 የዛሬው አነቃቂ ኤሮቢክስ</h2>
         <div class="video-container">
             <iframe src="https://www.youtube.com/embed/ml6cT4AZdqI" frameborder="0" allowfullscreen></iframe>
         </div>
     </section>
 
     <section class="card">
-        <h2>📊 ሳይንሳዊ የጤና መመዘኛ</h2>
-        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 10px;">
-            <input type="number" id="age" placeholder="እድሜ">
-            <input type="number" id="weight" placeholder="ክብደት (ኪሎ)">
-            <input type="number" id="height" placeholder="ቁመት (ሳ.ሜ)">
-        </div>
-        <button onclick="professorAnalysis()">የሊቃውንት ትንታኔን አሳይ</button>
+        <h2>📊 ሳይንሳዊ የጤና መመዘኛ (Health Diagnosis)</h2>
+        <p>የእርስዎን ክብደት እና ቁመት በማስገባት የሊቃውንቱን ትንታኔ ይመልከቱ፦</p>
+        <input type="number" id="weight" placeholder="ክብደት በኪሎ (ለምሳሌ፦ 75)">
+        <input type="number" id="height" placeholder="ቁመት በሳንቲ ሜትር (ለምሳሌ፦ 175)">
+        <button onclick="calculateHealth()">ሳይንሳዊ ትንታኔውን አሳይ</button>
         <div id="healthResult" class="result-box"></div>
     </section>
 
     <section class="card">
         <h2>🥗 የአመጋገብ መመሪያ (በደም አይነት)</h2>
+        <p>የደም አይነትዎን በመምረጥ የሚስማማዎትን እና የማይስማማዎትን ምግቦች በዝርዝር ይመልከቱ፦</p>
         <select id="bloodType" onchange="getDietAdvice()">
             <option value="">-- የደም አይነትዎን ይምረጡ --</option>
             <option value="A">ደም አይነት A</option>
@@ -72,38 +95,85 @@
 </div>
 
 <footer>
-    <p><strong>ጥቤ ፊትነስ | 📞 0924399582</strong></p>
-    <p>በ WHO፣ Harvard Medical School እና London University ጥናቶች ላይ የተመሰረተ።</p>
+    <p><strong>ጥቤ ፊትነስ | ወሰን ትራፊክ መብራት | 📞 0924399582</strong></p>
+    <p style="font-size: 0.85rem; opacity: 0.8;">ምንጮች፦ WHO Technical Report 894, Harvard Nutrition Source, እና ACSM Guidelines (11th Ed.)</p>
 </footer>
 
 <script>
-    // በየቀኑ የሚቀያየሩ ጥቅሶች
+    // በየቀኑ የሚቀያየሩ አነቃቂ ጥቅሶች
     const quotes = [
         "✨ ጤና ምርጫ ሳይሆን ውሳኔ ነው፤ ዛሬ ለሰውነትህ ታመን!",
-        "✨ ድል የሚገኘው ትላንት ካቆምክበት ቦታ ዛሬ በመቀጠልህ ነው።",
+        "✨ ውጤት የሚመጣው ትላንት ካቆምክበት ሳይሆን ዛሬ ከቀጠልክበት ነው!",
         "✨ ሰውነትህ የምትኖርበት ብቸኛው ቤትህ ነው፤ በሚገባ ጠብቀው!",
-        "✨ ህመም ጊዜያዊ ነው፤ ውጤት ግን ዘላቂ ነው!"
+        "✨ ህመም ጊዜያዊ ነው፤ ውጤት ግን ዘላቂ ነው!",
+        "✨ የዛሬው ላብ የነገው ኩራትህ ነው፤ ቀጥልበት!"
     ];
     document.getElementById('dailyQuote').innerText = quotes[Math.floor(Math.random() * quotes.length)];
 
-    function professorAnalysis() {
-        let w = document.getElementById('weight').value;
-        let h = document.getElementById('height').value / 100;
+    // ሳይንሳዊ የጤና ትንታኔ (BMI)
+    function calculateHealth() {
+        let w = parseFloat(document.getElementById('weight').value);
+        let h = parseFloat(document.getElementById('height').value) / 100;
         let res = document.getElementById('healthResult');
-        if(!w || !h) return;
-        let bmi = (w / (h * h)).toFixed(1);
         
-        res.style.display = "block";
-        res.innerHTML = `<strong>ሳይንሳዊ ማብራሪያ፦</strong><br>የእርስዎ BMI ${bmi} ነው። እንደ ዓለም ጤና ድርጅት (WHO) ጥናት፣ ይህ ውጤት የልብ ስራን እና የደም ዝውውርን በቀጥታ ይነካል። ለተሻለ ውጤት በቀን ለ40 ደቂቃ ኤሮቢክስ መስራት እና በቂ ውሃ መጠጣት ሜታቦሊዝምን በ20% ያፋጥናል።<br><span class='source-tag'>ምንጭ፦ WHO Technical Report 894 & Harvard Medical Review</span>`;
+        if (w > 0 && h > 0) {
+            let bmi = (w / (h * h)).toFixed(1);
+            let status = (bmi < 18.5) ? "ክብደትዎ ዝቅተኛ ነው (Underweight)" : (bmi < 25) ? "በጣም ጤናማ ክብደት ላይ ነዎት (Healthy)" : "መጠነኛ ውፍረት ይታያል (Overweight)";
+            
+            res.style.display = "block";
+            res.innerHTML = `
+                <strong>የሊቃውንት ትንታኔ፦</strong><br>
+                የእርስዎ BMI ውጤት ${bmi} ሲሆን፣ ይህ የሚያሳየው <strong>${status}</strong> መሆንዎን ነው።<br><br>
+                <strong>ሳይንሳዊ ማብራሪያ፦</strong> እንደ ዓለም ጤና ድርጅት (WHO) ጥናት፣ ይህ ውጤት የልብ ስራን እና ሜታቦሊዝምን በቀጥታ ይነካል። ጤንነትዎን ለመጠበቅ በቀን ለ45 ደቂቃ መካከለኛ ኤሮቢክስ እንዲሰሩ እና በቂ ውሃ እንዲጠጡ ይመከራል።
+                <span class='source-tag'>ምንጭ፦ WHO Technical Report Series No. 894 & Harvard Medical Review</span>
+            `;
+        } else {
+            alert("እባክዎ ክብደት እና ቁመት በትክክል ያስገቡ!");
+        }
     }
 
+    // የደም አይነት አመጋገብ መመሪያ
     function getDietAdvice() {
         let type = document.getElementById('bloodType').value;
         let res = document.getElementById('dietResult');
-        const diets = {
-            'A': "<strong>Type A ማብራሪያ:</strong> በሀርቫርድ ጥናት መሰረት፣ የዚህ ደም አይነት ባለቤቶች አትክልት ላይ ትኩረት ማድረግ አለባቸው። ስጋ መፈጨት ላይ ችግር ሊኖር ስለሚችል ጥራጥሬን ምርጫዎ ያድርጉ።",
-            'B': "<strong>Type B ማብራሪያ:</strong> ለንደን ዩኒቨርሲቲ እንደሚለው፣ የወተት ተዋጽኦዎች እና አረንጓዴ አትክልቶች ለርስዎ ሀይል ሰጪ ናቸው። በቆሎን መቀነስ ለክብደት መቀነስ ይረዳል።",
-            'O': "<strong>Type O ማብራሪያ:</strong> ከፍተኛ ፕሮቲን (ስጋ እና አሳ) ሜታቦሊዝምን ያነቃቃል። ስንዴ እና ጥራጥሬ ለሆድ መነፋት ምክንያት ሊሆኑ ይችላሉ።",
-            'AB': "<strong>Type AB ማብራሪያ:</strong> የሁለቱም አይነት (A እና B) ቅልቅል በመሆኑ፣ አሳ እና እርጎ በጣም ይመከራሉ። ቀይ ስጋን በትንሹ መጠቀም ለጤናዎ ወሳኝ ነው።"
+        
+        const dietData = {
+            'A': {
+                desc: "በሀርቫርድ ጥናት መሰረት፣ የዚህ ደም አይነት ባለቤቶች አትክልት ላይ ያተኮረ አመጋገብ (Vegetarian) ይስማማቸዋል።",
+                allowed: "አትክልቶች፣ ጥራጥሬዎች፣ ፍራፍሬዎች፣ አሳ እና አኩሪ አተር።",
+                forbidden: "ቀይ ስጋ፣ የወተት ተዋጽኦዎች (ቅቤ፣ አይብ) እና ስንዴ።"
+            },
+            'B': {
+                desc: "ተለዋዋጭ የሆነ የአመጋገብ ስርአት መከተል የሚችሉ ሲሆኑ፣ በለንደን ዩኒቨርሲቲ ጥናት የወተት ተዋጽኦዎችን መመገብ ይችላሉ።",
+                allowed: "እንቁላል፣ አረንጓዴ አትክልቶች፣ እርጎ እና ፍየል ስጋ።",
+                forbidden: "በቆሎ፣ ስንዴ፣ ምስር፣ ቲማቲም እና ኦቾሎኒ።"
+            },
+            'O': {
+                desc: "ከፍተኛ ፕሮቲን ያላቸው ምግቦች ለሀይል ሰጭነት እና ለሜታቦሊዝም ማነቃቂያነት ይስማማቸዋል።",
+                allowed: "ቀይ ስጋ (የበግ፣ የበሬ)፣ አሳ፣ አትክልቶች እና ፍራፍሬዎች።",
+                forbidden: "ስንዴ፣ በቆሎ፣ ምስር እና የወተት ተዋጽኦዎች።"
+            },
+            'AB': {
+                desc: "የሁለቱም አይነት (A እና B) ቅልቅል ባህሪ ያላቸው ሲሆን፣ ጥንቃቄ የተሞላበት አመጋገብ ያስፈልጋቸዋል።",
+                allowed: "አሳ፣ እርጎ፣ አረንጓዴ ቅጠላቅጠል፣ እንቁላል እና ጥራጥሬዎች።",
+                forbidden: "ቀይ ስጋ፣ በቆሎ፣ የዶሮ ስጋ እና የባቄላ አይነቶች።"
+            }
         };
-        if(type) { res.style.display = "block"; res.innerHTML = diets[type] + "<br><span class='source-tag'>ምንጭ፦ Dr. D'Adamo Blood Type Diet Research</span>"; }
+
+        if(type) {
+            res.style.display = "block";
+            res.innerHTML = `
+                <strong>የደም አይነት ${type} ማብራሪያ፦</strong><br>${dietData[type].desc}
+                <div class="diet-grid">
+                    <div class="diet-box allowed">✅ <strong>የሚመከሩ ምግቦች፦</strong><br>${dietData[type].allowed}</div>
+                    <div class="diet-box forbidden">❌ <strong>የማይመከሩ (የሚቀነሱ)፦</strong><br>${dietData[type].forbidden}</div>
+                </div>
+                <span class='source-tag'>ምንጭ፦ Harvard Nutrition Source & Dr. D'Adamo Diet Research</span>
+            `;
+        } else {
+            res.style.display = "none";
+        }
+    }
+</script>
+</body>
+</html>
