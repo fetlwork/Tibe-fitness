@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="am">
 <head>
@@ -5,40 +6,131 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tebe Fitness - ጥቤ ፊትነስ</title>
     <style>
-        :root { --primary: #e8491d; --secondary: #2c3e50; --light: #f9f9f9; --dark: #1a1a1a; }
-        body { font-family: 'Segoe UI', Arial, sans-serif; margin: 0; padding: 0; background: var(--light); color: #333; line-height: 1.6; }
-        header { background: var(--dark); color: white; padding: 40px 20px; text-align: center; border-bottom: var(--primary) 5px solid; }
-        .container { width: 95%; max-width: 1100px; margin: auto; padding: 20px 0; }
-        .card { background: white; padding: 25px; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); margin-bottom: 30px; }
-        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; }
-        button { background: var(--primary); color: white; border: none; padding: 15px 30px; cursor: pointer; border-radius: 8px; font-weight: bold; width: 100%; margin-top: 20px; }
-        .result-box { margin-top: 20px; padding: 20px; background: #f0f7ff; border-radius: 8px; border-left: 5px solid var(--primary); }
-        footer { background: var(--dark); color: white; text-align: center; padding: 40px 20px; margin-top: 60px; }
+        :root { --primary: #ff4d00; --secondary: #1a1a1a; --accent: #ffd700; --light: #ffffff; }
+        body { font-family: 'Segoe UI', Arial, sans-serif; margin: 0; padding: 0; background: #f4f4f4; color: #333; }
+        
+        /* Navigation */
+        nav { background: var(--secondary); color: white; padding: 15px; text-align: center; position: sticky; top: 0; z-index: 1000; }
+        
+        /* Hero Section */
+        .hero { background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&w=1350&q=80'); 
+                height: 400px; background-size: cover; background-position: center; display: flex; flex-direction: column; 
+                justify-content: center; align-items: center; color: white; text-align: center; padding: 20px; }
+        .hero h1 { font-size: 3rem; margin: 0; color: var(--accent); }
+        
+        .container { width: 90%; max-width: 1200px; margin: auto; padding: 40px 0; }
+        
+        /* Cards */
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
+        .card { background: white; padding: 30px; border-radius: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); border-top: 5px solid var(--primary); }
+        
+        input, select { width: 100%; padding: 12px; margin: 10px 0; border: 1px solid #ddd; border-radius: 8px; box-sizing: border-box; }
+        button { background: var(--primary); color: white; border: none; padding: 15px; width: 100%; border-radius: 8px; font-weight: bold; cursor: pointer; transition: 0.3s; font-size: 1.1rem; }
+        button:hover { background: #e64500; transform: translateY(-2px); }
+
+        .result-display { background: #fffde7; padding: 20px; border-radius: 8px; margin-top: 20px; display: none; border-left: 5px solid var(--accent); }
+        
+        footer { background: var(--secondary); color: white; text-align: center; padding: 50px 20px; margin-top: 50px; }
+        .contact-info { color: var(--accent); font-size: 1.2rem; }
     </style>
 </head>
 <body>
-<header>
-    <h1>TEBE FITNESS | ጥቤ ፊትነስ</h1>
-    <p>ሳይንሳዊ የስፖርት ሳይንስ እና የኒውትሬሽን ማዕከል</p>
-</header>
+
+<nav>
+    <h2>TEBE FITNESS | ጥቤ ፊትነስ</h2>
+</nav>
+
+<section class="hero">
+    <h1>ጤናዎ በእጅዎ ነው!</h1>
+    <p>ሳይንሳዊ በሆነ መንገድ ሰውነትዎን ይገንቡ</p>
+</section>
+
 <div class="container">
-    <section class="card">
-        <h2>🏋️ የግል ስልጠና መመሪያ</h2>
-        <div class="grid">
-            <div><label>ጾታ</label><select id="userGender"><option value="male">ወንድ</option><option value="female">ሴት</option></select></div>
-            <div><label>ትኩረት የሚፈልገው ክፍል</label><select id="bodyPart"><option value="abs">ለሆድ (Abs)</option><option value="glutes">ለዳሌ</option></select></div>
+    <div class="grid">
+        <div class="card">
+            <h2>📊 የሰውነት ሁኔታ (BMI)</h2>
+            <label>ክብደት (ኪሎ)</label>
+            <input type="number" id="weight" placeholder="ለምሳሌ፡ 70">
+            <label>ቁመት (ሴንቲሜትር)</label>
+            <input type="number" id="height" placeholder="ለምሳሌ፡ 170">
+            <button onclick="calcBMI()">ውጤቱን አሳይ</button>
+            <div id="bmiResult" class="result-display"></div>
         </div>
-        <button onclick="getAdvice()">ምክር ያግኙ</button>
-        <div id="result" class="result-box" style="display:none;"></div>
-    </section>
+
+        <div class="card">
+            <h2>🏋️ የግል ስልጠና መመሪያ</h2>
+            <label>ጾታ</label>
+            <select id="gender">
+                <option value="ወንድ">ወንድ</option>
+                <option value="ሴት">ሴት</option>
+            </select>
+            <label>ትኩረት የሚፈልገው ክፍል</label>
+            <select id="focus">
+                <option value="abs">ለሆድ (Abs)</option>
+                <option value="legs">ለዳሌና እግር</option>
+                <option value="full">ለሙሉ ሰውነት</option>
+            </select>
+            <button onclick="getAdvice()">ምክሩን አሳይ</button>
+            <div id="workoutResult" class="result-display"></div>
+        </div>
+    </div>
+
+    <div class="card" style="margin-top: 40px;">
+        <h2>🥗 የአመጋገብ ስርአት በደም አይነት</h2>
+        <p>የደም አይነትዎን በመምረጥ ተስማሚ ምግቦችን ይወቁ፦</p>
+        <select id="bloodType" onchange="showFood()">
+            <option value="">-- የደም አይነት ይምረጡ --</option>
+            <option value="A">Type A</option>
+            <option value="B">Type B</option>
+            <option value="O">Type O</option>
+            <option value="AB">Type AB</option>
+        </select>
+        <div id="foodResult" class="result-display"></div>
+    </div>
 </div>
+
 <footer>
-    <p>ጥቤ ፊትነስ - ወሰን ትራፊክ መብራት | 📞 0924399582</p>
+    <p>ጥቤ ፊትነስ - ጤናማ ትውልድ እንገነባለን!</p>
+    <div class="contact-info">
+        <p>📍 አድራሻ፦ ወሰን ትራፊክ መብራት</p>
+        <p>📞 ስልክ፦ 0924399582</p>
+    </div>
+    <p>&copy; 2026 Tebe Fitness. All Rights Reserved.</p>
 </footer>
+
 <script>
+    function calcBMI() {
+        let w = document.getElementById('weight').value;
+        let h = document.getElementById('height').value / 100;
+        if(w > 0 && h > 0) {
+            let bmi = (w / (h * h)).toFixed(1);
+            let msg = bmi < 18.5 ? "ክብደትዎ ዝቅተኛ ነው፤ የተመጣጠነ ምግብ ይጨምሩ።" : 
+                      bmi < 25 ? "በጣም ጥሩ! ጤናማ ክብደት ላይ ነዎት።" : "መጠነኛ ውፍረት አለ፤ ኤሮቢክስ ይጀምሩ።";
+            let res = document.getElementById('bmiResult');
+            res.style.display = "block";
+            res.innerHTML = "<strong>ውጤት፦ " + bmi + "</strong><br>" + msg;
+        }
+    }
+
     function getAdvice() {
-        document.getElementById('result').style.display = "block";
-        document.getElementById('result').innerHTML = "እንኳን ወደ ጥቤ ፊትነስ በሰላም መጡ! ለጤናዎ የሚስማማ እንቅስቃሴ እና የአመጋገብ መመሪያ እናዘጋጅልዎታለን።";
+        let g = document.getElementById('gender').value;
+        let f = document.getElementById('focus').value;
+        let res = document.getElementById('workoutResult');
+        res.style.display = "block";
+        let text = g === "ሴት" && f === "legs" ? "ለዳሌ ቅርጽ፦ ስኳት (Squats) እና ላንጅስ (Lunges) በቀን 3 ዙር በ15 ድግግሞሽ ይስሩ።" : 
+                   "ለሆድ፦ በቀን ለ10 ደቂቃ ፕላንክ እና ክራንችስ መስራት ስብን ያቀልጣል።";
+        res.innerHTML = "<strong>የፕሮፌሰር ምክር፦</strong><br>" + text;
+    }
+
+    function showFood() {
+        let b = document.getElementById('bloodType').value;
+        let res = document.getElementById('foodResult');
+        if(b) {
+            res.style.display = "block";
+            let food = b === "A" ? "አትክልትና ፍራፍሬ ያብዙ። ስጋ ይቀንሱ።" : 
+                       b === "O" ? "በፕሮቲን የበለጸጉ (ስጋ፣ ጥራጥሬ) ምግቦች ተስማሚ ናቸው።" : "የተመጣጠነ ምግብ ይውሰዱ።";
+            res.innerHTML = "<strong>ለደም አይነት " + b + " ተስማሚ ምግብ፦</strong><br>" + food;
+        }
     }
 </script>
 </body>
